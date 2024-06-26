@@ -1,9 +1,11 @@
-/* main.c */
 #include <stdio.h>
-#include "stack.h"
+#include "populator.h"
 
 int main(void)
 {
-	push('a');
-	return 0;
+     unit_t u;
+
+     set_unit(&u);
+     printf("number: %d\nmsg: %s\n", u.number, u.msg);
+     return 0;
 }

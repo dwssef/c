@@ -1,13 +1,26 @@
 CC = gcc
-CFLAGS = -g
 
-all: main.c
-	$(CC) $(CFLAGS) main.c -o main
+CFLAGS = -Wall -Wextra -std=c11 -g
+
+TARGET = main
+
+SRCS = main.c populator.c
+
+OBJS = $(SRCS:.c=.o)
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJDIR) $(TARGET)
-	rm -rf main
-	rm -rf libstack.a
-	rm -rf libstack.so
+	rm -f $(OBJS) $(TARGET)
 
 .PHONY: all clean
+
+print-variables:
+	@echo "Source files: $(SRCS)"
+	@echo "Object files: $(OBJS)"
