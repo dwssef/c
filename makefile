@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -std=c11 -g
 
 TARGET = main
 
-SRCS = main.c para_allocator.c
+SRCS = main.c ret_ptr.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -20,7 +20,7 @@ clean:
 	rm -f $(OBJS) $(TARGET)
 
 cleanall:
-	rm -rf $(SRCS) *.h
+	rm -rf *.c *.h
 
 .PHONY: all clean
 

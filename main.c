@@ -1,13 +1,9 @@
+/* main.c */
 #include <stdio.h>
-#include "para_allocator.h"
+#include "ret_ptr.h"
 
 int main(void)
 {
-     unit_t *p = NULL;
-
-     alloc_unit(&p);
-     printf("number: %d\nmsg: %s\n", p->number, p->msg);
-     free_unit(p);
-     p = NULL;
+     printf("%s %s\n", get_a_day(0), get_a_day(1));
      return 0;
 }
