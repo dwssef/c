@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -std=c11 -g
 
 TARGET = main
 
-SRCS = main.c ret_ptr.c
+SRCS = main.c para_callback.c
 
 OBJS = $(SRCS:.c=.o)
 

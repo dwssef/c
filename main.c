@@ -1,9 +1,23 @@
 /* main.c */
 #include <stdio.h>
-#include "ret_ptr.h"
+#include "para_callback.h"
+
+void say_hello(void *str)
+{
+     printf("Hello %s\n", (const char *)str);
+}
+
+void count_numbers(void *num)
+{
+     int i;
+     for(i=1; i<=(int)num; i++)
+	  printf("%d ", i);
+     putchar('\n');
+}
 
 int main(void)
 {
-     printf("%s %s\n", get_a_day(0), get_a_day(1));
+     repeat_three_times(say_hello, "Guys");
+     repeat_three_times(count_numbers, (void *)4);
      return 0;
 }
