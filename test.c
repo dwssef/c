@@ -1,15 +1,20 @@
 #include <stdio.h>
 
-void printValues(const int **ptr) {
-    printf("Value: %d\n", **ptr);
+void test(int *p){
+    printf("%d\n", p);
 }
 
-int main() {
-    int value = 10;
-    int *ptr1 = &value;
-    const int **ptr2 = (const int **)&ptr1;
-
-    printValues(ptr2);
-
+int main(int argc, char **argv)
+{
+    int i = 10;
+    int *p = &i;
+    int **q = &p;
+    printf("%p\n", &i);
+    printf("%p\n", p);
+    printf("%p\n", &p);
+    printf("%p\n", &q);
+    printf("%d\n", **q);
+    printf("%p\n", *q);
+    test(&p);
     return 0;
 }

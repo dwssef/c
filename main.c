@@ -1,14 +1,13 @@
 #include <stdio.h>
-#include "redirect_ptr.h"
+#include "para_allocator.h"
 
 int main(void)
 {
-     const char *firstday = NULL;
-     const char *secondday = NULL;
-     get_a_day(&firstday);
-     get_a_day(&secondday);
-     printf("%s\t%s\n", firstday, secondday);
-     printf("f: %s\n", firstday);
+     unit_t *p = NULL;
 
+     alloc_unit(&p);
+     printf("number: %d\nmsg: %s\n", p->number, p->msg);
+     free_unit(p);
+     p = NULL;
      return 0;
 }
