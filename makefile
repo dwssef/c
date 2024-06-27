@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -std=c11 -g
 
 TARGET = main
 
-SRCS = main.c populator.c
+SRCS = main.c redirect_ptr.c
 
 OBJS = $(SRCS:.c=.o)
 
