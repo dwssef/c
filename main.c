@@ -1,24 +1,34 @@
-/* main.c */
 #include <stdio.h>
-#include "generics.h"
+#include <stdarg.h>
 
-int cmp_student(void *a, void *b)
+void myprintf(const char *format, ...)
 {
-     if(((student_t *)a)->score > ((student_t *)b)->score)
-	  return 1;
-     else if(((student_t *)a)->score == ((student_t *)b)->score)
-	  return 0;
-     else
-	  return -1;
+     va_list ap;
+     char c;
+
+     va_start(ap, format);
+     while (c = *format++) {
+	  switch(c) {
+	  case 'c': {
+	       /* char is promoted to int when passed through '...' */
+	       char ch = va_arg(ap, int);
+	       putchar(ch);
+	       break;
+	  }
+	  case 's': {
+	       char *p = va_arg(ap, char *);
+	       fputs(p, stdout);
+	       break;
+	  }
+	  default:
+	       putchar(c);
+	  }
+     }
+     va_end(ap);
 }
 
 int main(void)
 {
-     student_t list[4] = {{"Tom", 68}, {"Jerry", 72},
-		       {"Moby", 60}, {"Kirby", 89}};
-     student_t *plist[4] = {&list[0], &list[1], &list[2], &list[3]};
-     student_t *pmax = max((void **)plist, 4, cmp_student);
-     printf("%s gets the highest score %d\n", pmax->name, pmax->score);
-
+     myprintf("c\ts\n", '1', "hello");
      return 0;
 }
